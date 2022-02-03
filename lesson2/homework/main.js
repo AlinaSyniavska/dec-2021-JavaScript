@@ -3,7 +3,7 @@
 (в першу, другу, третю или четверту частину години).*/
 
 // 0 - 14; 15 - 29; 30 - 44; 45 - 59
-let time = Math.floor(Math.random() * 60);
+let time = Math.round(Math.random() * 60);
 console.log(time);
 
 if ((time >= 0) && (time <= 14)) {
@@ -15,7 +15,7 @@ if ((time >= 0) && (time <= 14)) {
 } else if ((time >= 45) && (time <= 59)) {
     console.log('time is in IV quarter');
 } else {
-    console.log('Error!!!');
+    console.log('error!!!');
 }
 
 /*- У змінній day дано якесь число від 1 до 31.
@@ -90,7 +90,6 @@ switch (idDay) {
         break;
     default:
         msg = 'Невірно вказаний день тижня';
-        break;
 }
 alert(msg);
 

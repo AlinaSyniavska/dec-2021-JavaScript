@@ -63,7 +63,7 @@ for (let simpson of simpsons) {
     document.write(`<div style="font-size: 24px; margin-top: 30px;">${simpson.name} ${simpson.surname}, ${simpson.age} років</div>`);
     document.write('<div style="display: flex;">');
         document.write(`<div style="flex: 0 1 300px; text-align: justify;">${simpson.info}</div>`);
-        document.write(`<div><img src="${simpson.photo}"></div>`);
+        document.write(`<div><img src="${simpson.photo}" alt="photo ${simpson.name}"></div>`);
     document.write('</div>');
 
 }
@@ -75,7 +75,7 @@ for (let simpson of simpsons) {
     document.write('<div class="card">');
         document.write(`<h2 class="card__title">${simpson.name} ${simpson.surname}. Age is ${simpson.age}.</h2>`);
         document.write(`<p class="card__info">${simpson.info}</p>`);
-        document.write(`<div class="card__img"><img src="${simpson.photo}"></div>`);
+        document.write(`<div class="card__img"><img src="${simpson.photo}" alt="photo ${simpson.name}"></div>`);
     document.write('</div>');
 }
 document.write('</div>');
@@ -114,7 +114,7 @@ document.write('<div class="products">');
 for (let product of products) {
     document.write('<div class="product-card">');
     document.write(`<h3 class="product-title"><span>${product.title}</span>. Price -  ${product.price}.</h3>`);
-    document.write(`<div class="product-image"><img src="${product.image}"></div>`);
+    document.write(`<div class="product-image"><img src="${product.image}" alt="photo ${product.title}"></div>`);
     document.write('</div>');
 }
 document.write('</div>');

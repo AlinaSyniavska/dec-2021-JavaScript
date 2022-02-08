@@ -3,7 +3,7 @@
 просто виводить його, якщо два аргументи - складає або конкатенує їх між собою.
 */
 
-function checkArgs() {
+/*function checkArgs() {
     let res;
     if (arguments.length === 1) {
         console.log(arguments[0]);
@@ -14,6 +14,23 @@ function checkArgs() {
             res = '';
         }
         for (let argument of arguments) {
+            res += argument;
+        }
+        console.log(res);
+    }
+}*/
+
+function checkArgs(...arg) {
+    let res;
+    if (arg.length === 1) {
+        console.log(arg[0]);
+    } else {
+        if (typeof arg[0] === "number") {
+            res = 0;
+        } else {
+            res = '';
+        }
+        for (let argument of arg) {
             res += argument;
         }
         console.log(res);

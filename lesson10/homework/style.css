@@ -1,0 +1,61 @@
+.hidden{
+    display: none;
+}
+
+#text{
+    position: fixed;
+    top: 8px;
+    left: 8px;
+}
+#btn{
+    position: fixed;
+    top: 50px;
+    left: 8px;
+}
+
+.container{
+    margin-top: 100px;
+    width: 200px;
+    height: 70px;
+    position: relative;
+    border: 2px solid lightcoral;
+}
+#btn2{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+form[name='form1']{
+    margin-top: 50px;
+}
+
+.menu{
+    margin-top: 50px;
+}
+#menuBtm{
+    width: 100px;
+    height: 30px;
+    background: bisque;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#menuBtm:hover{
+    background: burlywood;
+}
+.menuContainer{
+    width: 100px;
+    background: bisque;
+    border-radius: 10px;
+}
+.menuContainer>a{
+    display: block;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: #000;
+}
+.menuContainer>a:hover{
+    background: burlywood;
+    border-radius: 10px;
+}

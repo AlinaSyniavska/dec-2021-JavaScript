@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.users-box {
+    font-family: "Book Antiqua";
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    row-gap: 15px;
+    flex-wrap: wrap;
+    margin: 50px 0;
+}
+
+.user-block {
+    width: 45%;
+    /*height: 300px;*/
+    min-height: 300px;
+    box-sizing: border-box;
+    padding: 15px;
+    border: 2px solid silver;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+
+.user-block__person{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 15px;
+}
+
+.user-block__company{
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 15px;
+    border-top: 2px solid silver;
+}
+
+.user-info-block {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+    box-sizing: border-box;
+    padding-right: 15px;
+}
+
+.user-info-block > h3 {
+    flex: 1 1 auto;
+    margin-bottom: 30px;
+}
+
+.address-block {
+    width: 30%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.geo{
+    display: flex;
+    column-gap: 15px;
+}
+
+.geo-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.company-info{
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media screen and (max-width: 992px){
+    .users-box {
+        flex-direction: column;
+    }
+
+    .user-block {
+        width: auto;
+        margin: 0 15%;
+    }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            margin: 30px 0;
+            padding: 0;
+        }
+
+        .courses{
+            display: flex;
+            flex-wrap: wrap;
+            row-gap: 10px;
+            margin: 50px 0;
+            justify-content: space-evenly;
+        }
+        .courses__item{
+            width: 40%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+        }
+        .courses__item>h3{
+            text-align: center;
+        }
+        .courses__item_duration{
+            display: flex;
+            padding-right: 10px;
+            padding-left: 10px;
+            flex: 1 1 auto;
+        }
+        .month-duration{
+            flex: 0 1 25%;
+        }
+        .hour-duration{
+            flex: 1 1 auto;
+        }
+        .courses__item_modules{
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+        }
+        .courses__item_modules>div{
+            border-bottom: 2px solid grey;
+            padding-left: 10px;
+        }
+        .courses__item_modules>div:last-child{
+            border-bottom: 5px solid grey;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<script src="main.js"></script>
+</body>
+</html>

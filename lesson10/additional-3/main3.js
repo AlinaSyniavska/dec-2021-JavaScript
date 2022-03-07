@@ -50,36 +50,21 @@ document.body.appendChild(listUsers);
 formFilter.onsubmit = function (e) {
     e.preventDefault();
 
-    let arrFilter = [];
     let resultUsers = [];
 
-    if (formFilter.status.checked) {
-        arrFilter = usersWithAddress.filter(value => !(value.status));
-        resultUsers = [...arrFilter];
-        arrFilter = [];
-    }
-
-    if (formFilter.age.checked) {
-        if (formFilter.status.checked) {
-            arrFilter = resultUsers.filter(value => value.age >= 29);
-        } else {
-            arrFilter = usersWithAddress.filter(value => value.age >= 29);
-        }
-        resultUsers = [];
-        resultUsers = [...arrFilter];
-        arrFilter = [];
-    }
-
-    if (formFilter.city.checked) {
-        if (formFilter.status.checked || formFilter.age.checked) {
-            arrFilter = resultUsers.filter(value => value.address.city === 'Kyiv');
-        } else {
-            arrFilter = usersWithAddress.filter(value => value.address.city === 'Kyiv');
-        }
-
-        resultUsers = [];
-        resultUsers = [...arrFilter];
-        arrFilter = [];
+    if (formFilter.status.checked && formFilter.age.checked && formFilter.city.checked) {
+        resultUsers = usersWithAddress.filter(value => !(value.status))
+            .filter(value => value.age >= 29)
+            .filter(value => value.address.city === 'Kyiv');
+    } else if (formFilter.status.checked && formFilter.age.checked) {
+        resultUsers = usersWithAddress.filter(value => !(value.status))
+            .filter(value => value.age >= 29);
+    } else if (formFilter.status.checked && formFilter.city.checked) {
+        resultUsers = usersWithAddress.filter(value => !(value.status))
+            .filter(value => value.address.city === 'Kyiv');
+    } else if (formFilter.age.checked && formFilter.city.checked) {
+        resultUsers = usersWithAddress.filter(value => value.age >= 29)
+            .filter(value => value.address.city === 'Kyiv');
     }
 
     // console.log(resultUsers);

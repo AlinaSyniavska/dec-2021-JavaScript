@@ -24,7 +24,8 @@ btn.onclick = function () {
 let f1 = document.forms.form1;
 let btnForm = document.getElementById('btn3');
 
-btnForm.onclick = function (e) {
+// btnForm.onclick = function (e) {
+f1.onsubmit = function (e) {
     e.preventDefault();
     if (f1.age.value < 18) {
         console.log(`Введений вік менше 18! Вік - ${f1.age.value}`);

@@ -35,8 +35,6 @@ let createListUsers = (arr) => {
         li.innerText = `Name: ${user.name}, age: ${user.age}, status: ${user.status}, city: ${user.address.city}`;
         list.appendChild(li);
     }
-
-    // currentListUsers = [...arr];
 }
 
 let formFilter = document.createElement('form');

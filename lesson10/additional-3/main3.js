@@ -20,8 +20,24 @@ let usersWithAddress = [
     {id: 11, name: 'max', age: 31, status: true, address: {city: 'Ternopil', street: 'Shevchenko', number: 121}}
 ];
 
+let currentListUsers = [...usersWithAddress];
 let arrNameCheckBox = ['status', 'age', 'city'];
 let arrTextLabel = ['Статус FALSE', 'Старший 29 років', 'м. Київ'];
+let flStatus = 0;
+let flAge = 0;
+let flCity = 0;
+
+let createListUsers = (arr) => {
+    let list = document.getElementById('list');
+    list.innerHTML = '';
+    for (const user of arr) {
+        let li = document.createElement('li');
+        li.innerText = `Name: ${user.name}, age: ${user.age}, status: ${user.status}, city: ${user.address.city}`;
+        list.appendChild(li);
+    }
+
+    // currentListUsers = [...arr];
+}
 
 let formFilter = document.createElement('form');
 formFilter.setAttribute('name', 'fFilter');
@@ -39,45 +55,69 @@ for (let i = 0; i < arrNameCheckBox.length; i++) {
     formFilter.appendChild(containerInput);
 }
 
-let btnFilter = document.createElement('button');
-btnFilter.innerText = 'FILTER';
-formFilter.appendChild(btnFilter);
-let listUsers = document.createElement('ul');
-
-document.body.appendChild(formFilter);
+let listUsers = document.createElement('ol');
+listUsers.id = 'list';
 document.body.appendChild(listUsers);
+document.body.appendChild(formFilter);
 
-formFilter.onsubmit = function (e) {
-    e.preventDefault();
+createListUsers(currentListUsers);
 
-    let resultUsers = [];
-
-    if (formFilter.status.checked && formFilter.age.checked && formFilter.city.checked) {
-        resultUsers = usersWithAddress.filter(value => !(value.status))
-            .filter(value => value.age >= 29)
-            .filter(value => value.address.city === 'Kyiv');
-    } else if (formFilter.status.checked && formFilter.age.checked) {
-        resultUsers = usersWithAddress.filter(value => !(value.status))
-            .filter(value => value.age >= 29);
-    } else if (formFilter.status.checked && formFilter.city.checked) {
-        resultUsers = usersWithAddress.filter(value => !(value.status))
-            .filter(value => value.address.city === 'Kyiv');
-    } else if (formFilter.age.checked && formFilter.city.checked) {
-        resultUsers = usersWithAddress.filter(value => value.age >= 29)
-            .filter(value => value.address.city === 'Kyiv');
+formFilter.status.addEventListener('change', e => {
+    if (e.target.checked) {
+        flStatus = 1;
+    } else {
+        flStatus = 0;
     }
+});
 
-    // console.log(resultUsers);
-    formFilter.status.checked = false;
-    formFilter.age.checked = false;
-    formFilter.city.checked = false;
+formFilter.age.addEventListener('change', e => {
+    if (e.target.checked) {
+        flAge = 1;
+    } else {
+        flAge = 0;
+    }
+});
 
+formFilter.city.addEventListener('change', e => {
+    if (e.target.checked) {
+        flCity = 1;
+    } else {
+        flCity = 0;
+    }
+});
 
-    listUsers.innerText = '';
-    for (const user of resultUsers) {
-        let li = document.createElement('li');
-        li.innerText = `Name: ${user.name}, age: ${user.age}, status: ${user.status}, city: ${user.address.city}`;
-        listUsers.appendChild(li);
+formFilter.onchange = function () {
+    // console.log(e.target);
+    if (flStatus && flAge && flCity) {
+        createListUsers(currentListUsers.filter(value => !(value.status))
+            .filter(value => value.age >= 29)
+            .filter(value => value.address.city === 'Kyiv')
+        );
+    } else if (flStatus && flAge && !flCity) {
+        createListUsers(currentListUsers.filter(value => !(value.status))
+            .filter(value => value.age >= 29)
+        );
+    } else if (flStatus && !flAge && flCity) {
+        createListUsers(currentListUsers.filter(value => !(value.status))
+            .filter(value => value.address.city === 'Kyiv')
+        );
+    } else if (!flStatus && flAge && flCity) {
+        createListUsers(currentListUsers.filter(value => value.age >= 29)
+            .filter(value => value.address.city === 'Kyiv')
+        );
+    } else if(flStatus && !flAge && !flCity){
+        createListUsers(currentListUsers.filter(value => !(value.status))
+        );
+    } else if(!flStatus && flAge && !flCity){
+        createListUsers(currentListUsers.filter(value => value.age >= 29)
+        );
+    } else if(!flStatus && !flAge && flCity){
+        createListUsers(currentListUsers.filter(value => value.address.city === 'Kyiv')
+        );
+    } else if(!flStatus && !flAge && !flCity){
+        createListUsers(currentListUsers);
     }
 };
+
+
 

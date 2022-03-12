@@ -1,0 +1,106 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 10px;
+    width: 90%;
+}
+
+.post {
+    width: 250px;
+    min-width: 200px;
+    /*height: 300px;*/
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+    border: 2px solid #f5c3da;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    background: linear-gradient(to top left, powderblue, pink);
+}
+
+.post:hover {
+    background: #f3dbe6;
+}
+
+.post > h4 {
+    text-decoration: underline;
+}
+
+.post > h4,
+.post > h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.post > h3 {
+    height: 80px;
+}
+
+.post > p {
+    margin: 0;
+    text-align: justify;
+    height: 150px;
+    /*flex: 1 1 auto;*/
+}
+
+.post > button {
+    width: 50%;
+    height: 30px;
+    max-height: 30px;
+    align-self: center;
+    border-radius: 5px;
+    border: 1px solid #aeb3b8;
+}
+
+.post > button:hover {
+    transform: rotateX(0grad);
+    background: #aeb3b8;
+    cursor: pointer;
+}
+
+.comment {
+    width: 220px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #a99ba1;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    background: linear-gradient(to top left, powderblue, pink);
+
+    transition: 1s;
+    transform: rotateY(0);
+}
+.comment:hover {
+    background: #a99ba1;
+    transition: 1s;
+    transform: rotateY(10grad);
+}
+
+.comment > h5,
+.comment > h4 {
+    margin: 0;
+    text-align: center;
+}
+
+.comment > h4 {
+    height: 60px;
+}
+
+.comment > p {
+    margin: 0;
+    text-align: justify;
+    height: 140px;
+}

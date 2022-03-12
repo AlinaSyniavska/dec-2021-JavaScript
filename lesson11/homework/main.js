@@ -28,10 +28,11 @@ container.appendChild(form1);
 document.body.appendChild(container);
 
 let saveUserInfo = (key, userName, userAge) => {
-    let user = {
+/*    let user = {
         userName: userName,
         userAge: userAge
-    }
+    }  */
+    let user = {userName, userAge};
     localStorage.setItem(key, JSON.stringify(user));
 }
 
@@ -77,7 +78,7 @@ document.body.appendChild(containerCarForm);
 let saveCar = (key, carModel, carType, carVolume) => {
     let carsFromLocalStorage = JSON.parse(localStorage.getItem(key)) || [];
 
-    carsFromLocalStorage.push([carModel, carType, carVolume]);
+    carsFromLocalStorage.push({carModel, carType, carVolume});
 
     localStorage.setItem(key, JSON.stringify(carsFromLocalStorage));
 }

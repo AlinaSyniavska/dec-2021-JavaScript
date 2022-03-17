@@ -21,10 +21,12 @@ let createCart = function (k) {
     // console.log(productsFromLocalStorage);
 
     if (productsFromLocalStorage) {
-        productsFromLocalStorage.forEach((productItem, index) => {
+        productsFromLocalStorage.forEach((productItem) => {
             let productContainer = document.createElement('div');
             productContainer.classList.add('product');
 
+            let id = document.createElement('h3');
+            id.innerHTML = `<strong>${productItem.productId}</strong>`;
             let title = document.createElement('p');
             title.innerHTML = `Назва: <strong>${productItem.title}</strong>`;
             let number = document.createElement('p');
@@ -32,7 +34,13 @@ let createCart = function (k) {
             let price = document.createElement('p');
             price.innerHTML = `Ціна: <strong>${productItem.price}</strong>`;
 
-            productContainer.append(title, number, price);
+            let imgBox = document.createElement('div');
+            imgBox.classList.add('img-box');
+            let img = document.createElement('img');
+            img.src = productItem.img;
+
+            imgBox.appendChild(img);
+            productContainer.append(id, title, number, price, imgBox);
             container.appendChild(productContainer);
 
             let btnRemoveProduct = document.createElement('button');
@@ -43,12 +51,11 @@ let createCart = function (k) {
             container.appendChild(productContainer);
 
             btnRemoveProduct.onclick = function (e) {
-                // console.log(index);
+                let index = productsFromLocalStorage.findIndex(item => item.productId === productItem.productId);
                 let removed = productsFromLocalStorage.splice(index, 1);
                 localStorage.setItem(key, JSON.stringify(productsFromLocalStorage));
                 container.innerHTML = '';
                 createCart(key);
-                // document.location.reload();
             }
         });
     }

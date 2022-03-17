@@ -13,27 +13,38 @@
 
 let form = document.forms.productForm;
 let bntSave = form.getElementsByTagName('button')[0];
+let productId = 0;
 
-let saveCart = (key, title, number, price) => {
+let saveCart = (key, title, number, price, img) => {
     let productsFromLocalStorage = JSON.parse(localStorage.getItem(key)) || [];
+    let lastId;
 
-    productsFromLocalStorage.push({title, number, price});
+    if (!productsFromLocalStorage.length) {
+        productId = 1;
+    } else {
+        lastId = Math.max(...productsFromLocalStorage.map(item => item.productId));
+        productId = lastId + 1;
+    }
+
+    productsFromLocalStorage.push({productId, title, number, price, img});
 
     localStorage.setItem(key, JSON.stringify(productsFromLocalStorage));
 }
 
 bntSave.addEventListener('click', (e) => {
+    let urlProduct = 'https://freepngimg.com/thumb/apricot/133567-apricot-fruit-slice-download-hq-thumb.png';
     e.preventDefault();
 
-    if(form.productTitle.value === '' || form.productNumber.value === '' || form.productPrice.value === ''){
+    if (form.productTitle.value === '' || form.productNumber.value === '' || form.productPrice.value === '') {
         alert('Fill all fields!')
         return;
     }
 
-    saveCart('cartProducts', form.productTitle.value, form.productNumber.value, form.productPrice.value);
+    saveCart('cartProducts', form.productTitle.value, form.productNumber.value, form.productPrice.value, form.productImg.value || urlProduct);
     form.productTitle.value = '';
     form.productNumber.value = '';
     form.productPrice.value = '';
+    form.productImg.value = '';
 })
 
 let anchor = document.createElement('a');

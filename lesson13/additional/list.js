@@ -15,10 +15,22 @@ let key = 'cartProducts';
 
 let container = document.getElementsByClassName('cart')[0];
 
-let createCart = function (k) {
-    let productsFromLocalStorage = JSON.parse(localStorage.getItem(k));
+let btnContainer = document.createElement('div');
+btnContainer.classList.add('btn_container');
+let btnClearCart = document.createElement('button');
+btnClearCart.classList.add('btn__clear');
+btnClearCart.innerText = 'Видалити все';
 
+btnContainer.appendChild(btnClearCart);
+document.body.append(btnContainer);
+
+let createCart = function (k) {
+    let productsFromLocalStorage = JSON.parse(localStorage.getItem(k)) || [];
     // console.log(productsFromLocalStorage);
+
+    if (!productsFromLocalStorage.length) {
+        btnContainer.style.display = 'none';
+    }
 
     if (productsFromLocalStorage) {
         productsFromLocalStorage.forEach((productItem) => {
@@ -62,15 +74,6 @@ let createCart = function (k) {
 }
 
 createCart(key);
-
-let btnContainer = document.createElement('div');
-btnContainer.classList.add('btn_container');
-let btnClearCart = document.createElement('button');
-btnClearCart.classList.add('btn__clear');
-btnClearCart.innerText = 'Видалити все';
-
-btnContainer.appendChild(btnClearCart);
-document.body.append(btnContainer);
 
 btnClearCart.onclick = function () {
     localStorage.removeItem(key);

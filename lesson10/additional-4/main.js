@@ -10,6 +10,7 @@
 
 let arrChildren = [];
 let index = -1;
+let prevElement = document.body;
 
 function scraper(startElement) {
     if (startElement.tagName !== 'BODY' && startElement.tagName !== 'SCRIPT') {
@@ -22,10 +23,10 @@ function scraper(startElement) {
     }
 }
 
-function printInfoElement(element, arr, i){
-    element.innerText = `${arr[i].tagName}
-    class: ${arr[i].classList}
-    id: ${arr[i].id}`;
+function printInfoElement(arr, i){
+    prevElement.style.background = 'none';
+    arr[i].style.background = 'lightpink';
+    prevElement = arr[i];
 }
 
 scraper(document.body);
@@ -48,13 +49,6 @@ btnBack.disabled = true;
 btnContainer.append(btnBack, btnForward)
 document.body.appendChild(btnContainer);
 
-let curElement = document.createElement('div');
-curElement.style.height = '80px';
-curElement.style.marginTop = '50px';
-curElement.style.border = '2px solid silver';
-
-document.body.appendChild(curElement)
-
 btnForward.addEventListener('click', function (e) {
     btnBack.disabled = false;
 
@@ -62,7 +56,7 @@ btnForward.addEventListener('click', function (e) {
     if (index === arrChildren.length) {
         index = 0;
     }
-    printInfoElement(curElement, arrChildren, index);
+    printInfoElement(arrChildren, index);
 });
 
 btnBack.addEventListener('click', function (e) {
@@ -70,5 +64,5 @@ btnBack.addEventListener('click', function (e) {
     if (index < 0) {
         index = arrChildren.length - 1;
     }
-    printInfoElement(curElement, arrChildren, index);
+    printInfoElement(arrChildren, index);
 });
